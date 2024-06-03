@@ -18,12 +18,15 @@ from utils import get_chat_response
     #st.write(f"Frame rate: {audio.frame_rate}, Frame width: {audio.frame_width}, Duration: {audio.duration_seconds} seconds")
 
 with st.sidebar:
-    st.session_state["language"] = st.select_slider("", options=["English", "中文"], value="中文")
-    if "memory" in st.session_state:
-        del st.session_state["memory"]
-    if "messages" in st.session_state:
-        del st.session_state["messages"]
+    language = st.select_slider("", options=["English", "中文"], value="中文")
 
+    if "language" in st.session_state and language != st.session_state["language"]:
+        if "memory" in st.session_state:
+            del st.session_state["memory"]
+        if "messages" in st.session_state:
+            del st.session_state["messages"]
+
+    st.session_state["language"] = language
     #if language == "English":
     #    openai_api_key = st.text_input("Please input your OpenAI API Key：", type="password")
     #    st.markdown("[Get OpenAI API key here](https://platform.openai.com/account/api-keys)")
