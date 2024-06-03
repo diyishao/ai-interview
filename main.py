@@ -19,6 +19,10 @@ from utils import get_chat_response
 
 with st.sidebar:
     st.session_state["language"] = st.select_slider("", options=["English", "中文"], value="中文")
+    if "memory" in st.session_state:
+        del st.session_state["memory"]
+    if "messages" in st.session_state:
+        del st.session_state["messages"]
 
     #if language == "English":
     #    openai_api_key = st.text_input("Please input your OpenAI API Key：", type="password")
