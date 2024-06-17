@@ -47,9 +47,9 @@ if "memory" not in st.session_state:
     st.session_state["messages"] = []
 
 if st.session_state["language"] == "English":
-    resume = st.file_uploader("Please upload your resume to begin:", type=["txt", "pdf"])
+    resume = st.file_uploader("Please upload your resume to begin:", type=["txt"])
 else:
-    resume = st.file_uploader("请上传你的简历，然后开始跟面试官聊天:", type=["txt", "pdf"])
+    resume = st.file_uploader("请上传你的简历，然后开始跟面试官聊天:", type=["txt"])
 
 if resume:
     for message in st.session_state["messages"]:
